@@ -1,9 +1,21 @@
-import type { NextPage } from 'next'
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
+import type { NextPage } from "next";
+import Head from "next/head";
+import Image from "next/image";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import styles from "../styles/Home.module.css";
 
 const Home: NextPage = () => {
+  const router  = useRouter();
+  function goToDetailProductPage(){
+    router.push({
+      pathname:'/products/create',
+      query:{
+        productId: 123,
+        ref :'product'
+      },
+    })
+  }
   return (
     <div className={styles.container}>
       <Head>
@@ -17,7 +29,10 @@ const Home: NextPage = () => {
           Welcome to <a href="https://nextjs.org">Next.js!</a>
         </h1>
         <p>Hello , my name is Truong</p>
-        ádasdasdsa
+    <Link href="/about">
+      <a>go to about</a>
+    </Link>
+    <button onClick={goToDetailProductPage}>Go to index product detail page</button>
       </main>
 
       <footer className={styles.footer}>
@@ -26,14 +41,14 @@ const Home: NextPage = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by{' '}
+          Powered by{" "}
           <span className={styles.logo}>
             <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
           </span>
         </a>
       </footer>
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
